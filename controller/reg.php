@@ -11,6 +11,8 @@ if(!empty($_POST))
 	
 	if(empty($user)) $user_model->newUser($_POST['login'], $_POST['email'], $_POST['territory']);
 	
+	$_POST = array();
+	
 	require_once APP_PATH . 'view/usercard.html';
 }
 

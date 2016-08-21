@@ -14,7 +14,6 @@ if(!empty($_POST['selval']) && !empty($_POST['object_alias']))
 	if(!empty($geo_id))
 	{
 		$regions = $main->getGeoById($geo_id);
-		
 		if(!empty($regions))
 		{
 			$object_alias = $_POST['object_alias'];
