@@ -1,0 +1,61 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="libs/chosen_v1.6.2/chosen.min.css">
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	
+	<body>
+		<div id="form-content">
+			<form id="mainform" method="POST" action="controller/reg.php">
+				<div class="field">
+					<label for="login">ФИО:</label>
+					<input type="text" name="login" id="login">
+				</div>
+				<div class="field">
+					<label for="email">EMAIL:</label>
+					<input type="text" name="email" id="email">
+				</div>
+				
+				<div class="field">
+					<label for="region">Список областей:</label>
+					<select class="chzn-select" name="region" id="region">
+						<?php foreach($regions as $region){ ?>
+							<option value="<?php echo $region['ter_address']; ?>"><?php echo $region['ter_address']; ?></option>
+						<?php } ?>
+					</select>
+				</div>
+				
+				<div class="field" id="city-field" style="display:none;">
+					<label for="cities">Список городов:</label>
+					<select class="chzn-select" name="cities" id="cities">
+						<?php foreach($cities as $city){ ?>
+							<option value="<?php echo $city['ter_address']; ?>"><?php echo $city['ter_address']; ?></option>
+						<?php } ?>
+					</select>
+				</div>
+				
+				<div class="field" id="district-field" style="display:none;">
+					<label for="districts">Список районов:</label>
+					<select class="chzn-select" name="districts">
+						<?php foreach($districts as $district){ ?>
+							<option value="<?php echo $district['ter_address']; ?>"><?php echo $district['ter_address']; ?></option>
+						<?php } ?>
+					</select>
+				</div>
+				
+				<div class="submit">
+					<button onclick="submit_form();">Регистрация</button>
+				</div>
+				
+				<input type="hidden" id="territory" name="territory">
+			</form>
+		</div>
+	</body>
+	
+	<script src="libs/jquery-2.2.4.min.js"></script>
+	<script src="libs/chosen_v1.6.2/chosen.jquery.min.js"></script>
+	<script src="libs/chosen_v1.6.2/chosen.proto.min.js"></script>
+	<script src="js/app.js"></script>
+	
+</html>

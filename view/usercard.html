@@ -1,0 +1,20 @@
+<html>
+
+	<head>
+		<meta charset="utf-8">
+	</head>
+	
+	<body>
+		<?php if(!empty($user)) { ?>
+		Карточка пользователя<br><br>
+			<div id="form-content" style="position: fixed; width: 323px;">
+					ФИО: <div style="width:200px; float: right;"><?php echo $user['name']; ?></div><br><br>
+					EMAIL: <div style="width:200px; float: right;"><?php echo $user['email']; ?></div><br><br>
+					АДРЕС: <div style="width:200px; float: right;"><?php echo $user['territory']; ?></div><br><br>
+			</div>
+		<?php }else{ ?>
+			<div>Пользователь зарегистрирован!</div>
+		<?php } ?>
+	</body>
+	
+</html>
