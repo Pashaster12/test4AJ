@@ -6,10 +6,20 @@ $(function()
 	$(".chzn-select").chosen();
 });
 
-function submit_form()
+$('#mainform').submit(function()
 {
-	$('#mainform').submit();
-}
+	var login = $('input#login').val();
+	var email = $('input#email').val();
+	
+	var rv_name = /^[А-Я][а-яА-Я]+\ [А-Я][а-яА-Я]+\ [А-Я][а-яА-Я]+$/;
+    var rv_email = /^([a-zA-Z0-9_.-])+@([a-zA-Z0-9_.-])+\.([a-zA-Z])+([a-zA-Z])+/;
+	
+	if(login.length == '' || !rv_name.test(login)) alert("Поле 'ФИО' не может быть пустым, и содержать символы, кроме букв русского алфавита. В поле должна быть комбинация из трёх слов, разделённых пробелами. Слова должны начинаться с заглавных букв!");
+	else if(email == '' || !rv_email.test(email)) alert("Поле 'EMAIL' не может быть пустым и должно состоять только из латинских букв и символов '_.-', а также '@'. Введённые в него данные должны соответствовать общепринятому формату 'email@mailer.domain'!");
+	else $('#mainform').submit();
+	
+	return false;
+});
 
 function newlist(object_alias)
 {

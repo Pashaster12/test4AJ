@@ -6,7 +6,7 @@
 #mainform div.field div.chosen-container {float:right;}
 
 div.submit {text-align:center; margin-top: 40px;}
-div.submit button {width: 120px; height: 30px;}
+div.submit input {width: 120px; height: 30px;}
 
 div.card-title {text-align:center; margin-top: 20px; font-weight: bold;}
 
