@@ -2,19 +2,30 @@
 
 	<head>
 		<meta charset="utf-8">
+		<link rel="stylesheet" href="../css/style.css">
 	</head>
 	
 	<body>
 		<?php if(!empty($user)) { ?>
-		Карточка пользователя<br><br>
-			<div id="form-content" style="position: fixed; width: 323px;">
-					ФИО: <div style="width:200px; float: right;"><?php echo $user['name']; ?></div><br><br>
-					EMAIL: <div style="width:200px; float: right;"><?php echo $user['email']; ?></div><br><br>
-					АДРЕС: <div style="width:200px; float: right;"><?php echo $user['territory']; ?></div><br><br>
+			<div id="form-content">
+				<div id="mainform">
+					<div class="card-title">Карточка пользователя</div>
+					<div class="field">
+						ФИО:<div class="ucard"><?php echo $user['name']; ?></div>
+					</div>
+					
+					<div class="field">
+						EMAIL:<div class="ucard"><?php echo $user['email']; ?></div>
+					</div>
+					
+					<div class="field">
+						АДРЕС:<div class="ucard"><?php echo $user['territory']; ?></div>
+					</div>
+				</div>
 			</div>
 		<?php }else{ ?>
-			<div>Пользователь зарегистрирован!</div>
+			<div class="has-user">Пользователь зарегистрирован!</div>
 		<?php } ?>
-	</body>
+	</body>	
 	
 </html>

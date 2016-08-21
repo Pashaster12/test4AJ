@@ -9,7 +9,7 @@ if(!empty($_POST))
 	$user_model = new UserModel();
 	$user = $user_model->selectUser($_POST['email']);
 	
-	if(empty($user)) $user_model->newUser($_POST['login'], $_POST['email'], $_POST['region']);
+	if(empty($user)) $user_model->newUser($_POST['login'], $_POST['email'], $_POST['territory']);
 	
 	require_once APP_PATH . 'view/usercard.html';
 }
