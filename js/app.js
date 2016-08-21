@@ -9,7 +9,31 @@ function submit_form()
 	$('#mainform').submit();
 }
 
-$('#region').change(function()
+function newlist(object_alias)
+{
+	var value = $('#' + object_alias).val();
+	if($('*').is('#territory')) $('#territory').val(value);
+	
+	var new_alias = '';
+	
+	if (object_alias == 'region') new_alias = 'city';
+	else if (object_alias == 'city') new_alias = 'district';
+	
+	$.ajax({
+		type: 'POST',
+		url: 'ajaxcontroller/filler.php',
+		data: 'selval=' + value + '&object_alias=' + new_alias,
+		success: function(result)
+		{
+			if($('#' + new_alias + '-field').is(':hidden')) $('#' + new_alias + '-field').show();
+			
+			$('#' + new_alias + '-field').html(result);
+			$(".chzn-select").chosen();
+		}
+	});
+}
+
+/*$('#region').change(function()
 {
 	var value = $('#region').val();
 	if($('*').is('#territory')) $('#territory').val(value);
@@ -20,12 +44,16 @@ $('#region').change(function()
 		data: 'selval=' + value,
 		success: function(result)
 		{
-			alert(result);
-			if($('*').is('#cities') && result) $('#cities').toggle();
-			else return false;
+			if($('*').is('#city-field'))
+			{
+				$('#city-field').toggle();
+				$('#city-field').html(result);
+				
+				$(".chzn-select").chosen();
+			}
 		}
 	});
-});
+});*/
 
 function preview()
 {

@@ -18,31 +18,11 @@
 				</div>
 				
 				<div class="field">
-					<label for="region">Список областей:</label>
-					<select class="chzn-select" name="region" id="region">
-						<?php foreach($regions as $region){ ?>
-							<option value="<?php echo $region['ter_address']; ?>"><?php echo $region['ter_address']; ?></option>
-						<?php } ?>
-					</select>
+					<?php require('view/select.html'); ?>
 				</div>
 				
-				<div class="field" id="city-field" style="display:none;">
-					<label for="cities">Список городов:</label>
-					<select class="chzn-select" name="cities" id="cities">
-						<?php foreach($cities as $city){ ?>
-							<option value="<?php echo $city['ter_address']; ?>"><?php echo $city['ter_address']; ?></option>
-						<?php } ?>
-					</select>
-				</div>
-				
-				<div class="field" id="district-field" style="display:none;">
-					<label for="districts">Список районов:</label>
-					<select class="chzn-select" name="districts">
-						<?php foreach($districts as $district){ ?>
-							<option value="<?php echo $district['ter_address']; ?>"><?php echo $district['ter_address']; ?></option>
-						<?php } ?>
-					</select>
-				</div>
+				<div class="field" id="city-field" style="display:none;"></div>
+				<div class="field" id="district-field" style="display:none;"></div>
 				
 				<div class="submit">
 					<button onclick="submit_form();">Регистрация</button>
