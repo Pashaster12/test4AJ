@@ -6,7 +6,7 @@
 	</head>
 	
 	<body>
-		<?php if(!empty($user)) { ?>
+		<?php if(!empty($user)) : ?>
 			<div id="form-content">
 				<div id="mainform">
 					<div class="card-title">Карточка пользователя</div>
@@ -23,9 +23,9 @@
 					</div>
 				</div>
 			</div>
-		<?php }else{ ?>
+		<?php else : ?>
 			<div class="has-user">Пользователь зарегистрирован!</div>
-		<?php } ?>
+		<?php endif ?>
 	</body>	
 	
 </html>

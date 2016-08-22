@@ -13,7 +13,5 @@ if(!empty($_POST))
 	
 	$_POST = array();
 	
-	require_once APP_PATH . 'view/usercard.html';
+	require_once APP_PATH . 'view/usercard.tpl';
 }
-
-?>

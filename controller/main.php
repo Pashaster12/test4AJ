@@ -11,8 +11,6 @@ class MainController
 		
 		$object_alias = 'region';
 		
-		require_once APP_PATH . 'view/main.html';
+		require_once APP_PATH . 'view/main.tpl';
 	}
 }
-
-?>

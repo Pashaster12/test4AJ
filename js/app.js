@@ -1,8 +1,5 @@
 $(function()
 {
-	var curval = $('#region').val();
-	$('#territory').val(curval);
-	
 	$(".chzn-select").chosen();
 });
 
@@ -10,12 +7,11 @@ $('#mainform').submit(function()
 {
 	var login = $('input#login').val();
 	var email = $('input#email').val();
+	var geo = $('#territory').val();
 	
-	var rv_name = /^[А-Я][а-яА-Я]+\ [А-Я][а-яА-Я]+\ [А-Я][а-яА-Я]+$/;
-    var rv_email = /^([a-zA-Z0-9_.-])+@([a-zA-Z0-9_.-])+\.([a-zA-Z])+([a-zA-Z])+/;
-	
-	if(login.length == '' || !rv_name.test(login)) alert("Поле 'ФИО' не может быть пустым, и содержать символы, кроме букв русского алфавита. В поле должна быть комбинация из трёх слов, разделённых пробелами. Слова должны начинаться с заглавных букв!");
-	else if(email == '' || !rv_email.test(email)) alert("Поле 'EMAIL' не может быть пустым и должно состоять только из латинских букв, цифр и символов '_.-', а также '@'. Введённые в него данные должны соответствовать общепринятому формату 'email@mailer.domain'!");
+	if(login == "") alert("Поле 'ФИО' не может быть пустым!");
+	else if(email == "") alert("Поле 'EMAIL' не может быть пустым!");
+	else if(geo == "") alert('Выберите Ваше место жительства!');
 	else $('#mainform').submit();
 	
 	return false;
@@ -23,8 +19,8 @@ $('#mainform').submit(function()
 
 function newlist(object_alias)
 {
-	var value = $('#' + object_alias).val();
-	if($('*').is('#territory')) $('#territory').val(value);
+	var value = $('#' + object_alias + ' option:selected').attr('id');
+	$('#territory').val(value);
 	
 	var new_alias = '';
 	
@@ -33,14 +29,14 @@ function newlist(object_alias)
 	
 	$.ajax({
 		type: 'POST',
-		url: 'ajaxcontroller/filler.php',
-		data: 'selval=' + value + '&object_alias=' + new_alias,
+		url: 'ajaxcontroller/newgeo.php',
+		data: 'geoid=' + value + '&object_alias=' + new_alias,
 		success: function(result)
 		{
+			
 			if(result == '' && new_alias != '')
 			{
 				if($('#' + new_alias + '-field').is(':visible')) $('#' + new_alias + '-field').hide();
-				alert('У данного города нет районов и сёл');
 			}
 			else
 			{
@@ -49,11 +45,8 @@ function newlist(object_alias)
 				
 				if(new_alias == 'city' && $('#district-field').text() != '') $('#district-field').empty();
 				
-				if(new_alias != '')
-				{
-					var new_val = $('#' + new_alias).val();
-					if($('*').is('#territory')) $('#territory').val(new_val);
-				}
+				var new_val = $('#' + object_alias + ' option:selected').attr('id');
+				$('#territory').val(new_val);
 				
 				$(".chzn-select").chosen();
 			}

@@ -8,5 +8,3 @@ require_once(APP_PATH . 'controller/DB_actions.php');
 
 $main = new MainController();
 $main->index();
-
-?>

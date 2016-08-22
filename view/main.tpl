@@ -18,7 +18,7 @@
 				</div>
 				
 				<div class="field">
-					<?php require('view/select.html'); ?>
+					<?php require('view/select.tpl'); ?>
 				</div>
 				
 				<div class="field" id="city-field" style="display:none;"></div>
@@ -35,7 +35,6 @@
 	
 	<script src="libs/jquery-2.2.4.min.js"></script>
 	<script src="libs/chosen_v1.6.2/chosen.jquery.min.js"></script>
-	<script src="libs/chosen_v1.6.2/chosen.proto.min.js"></script>
 	<script src="js/app.js"></script>
 	
 </html>
